@@ -2,6 +2,10 @@ body {
   font-family: sans-serif;
 }
 
+p {
+  margin: 0;
+}
+
 input {
   border-radius: 16px;
   border: none;
@@ -46,6 +50,23 @@ button:hover {
   padding: 8px;
   margin: 8px;
   border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 0;
+  font-weight: bold;
+  color: #666;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.task-name {
+  margin-right: 8px;
 }
 
 /*# sourceMappingURL=/src.a2b27638.css.map */
