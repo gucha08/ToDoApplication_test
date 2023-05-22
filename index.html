@@ -8,35 +8,35 @@
 
 <body>
 	<div class="input-alea">
-		<input type="text" placeholder="TODOを入力してください">
-		<button>追加</button>
+		<input id="add-text" placeholder="TODOを入力してください" />
+		<button id="add-button">追加</button>
 	</div>
 	<div class="incomplete-alea">
 		<p class="title">未完了のTODO</p>
-		<ul>
+		<ul id="incomplete-list">
 			<li>
 				<div class="list-row">
 					<p class="task-name">タスク1</p>
-					<button>追加</button>
 					<button>完了</button>
+					<button>削除</button>
 				</div>
 			</li>
 			<li>
 				<div class="list-row">
 					<p class="task-name">タスク2</p>
-					<button>追加</button>
 					<button>完了</button>
+					<button>削除</button>
 				</div>
 			</li>
 		</ul>
 	</div>
 	<div class="complete-alea">
 		<p class="title">完了したTODO</p>
-		<ul>
+		<ul id="complete-list">
 			<li>
 				<div class="list-row">
 					<p class="task-name">タスク3</p>
-					<button>削除</button>
+					<button>戻す</button>
 				</div>
 			</li>
 		</ul>

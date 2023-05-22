@@ -176,6 +176,95 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./styles.css");
+var onClickAdd = function onClickAdd() {
+  // テキストボックスの値を取得し、初期化する。
+  var inputText = document.getElementById("add-text").value;
+  document.getElementById("add-text").value = "";
+  createIncompleteList(inputText);
+};
+
+// 未完了リストから指定の要素を削除
+var delteFromIncompleteList = function delteFromIncompleteList(deleteTarget) {
+  document.getElementById("incomplete-list").removeChild(deleteTarget);
+};
+
+// 未完了リストに追加
+var createIncompleteList = function createIncompleteList(text) {
+  // liタグ生成
+  var li = document.createElement("li");
+
+  // divタグ生成
+  var div = document.createElement("div");
+  div.className = "list-row";
+
+  // pタグ生成
+  var p = document.createElement("p");
+  p.className = "task-name";
+  p.innerText = text;
+
+  // button(完了)タグ生成
+  var completeButton = document.createElement("button");
+  completeButton.innerText = "完了";
+  completeButton.addEventListener("click", function () {
+    // 完了リストに追加する要素を取得
+    var addCompleteTarget = completeButton.closest("li");
+    console.log(addCompleteTarget);
+
+    // TODO内容テキストを取得
+    var addText = completeButton.previousElementSibling.innerText;
+
+    // liタグ以下を初期化
+    addCompleteTarget.textContent = null;
+
+    // divタグ生成
+    var div = document.createElement("div");
+    div.className = "list-row";
+
+    // pタグ生成
+    var p = document.createElement("p");
+    p.className = "task-name";
+    p.innerText = text;
+
+    // button(戻す)タグ生成
+    var backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+    backButton.addEventListener("click", function () {
+      createIncompleteList(text);
+      document.getElementById("complete-list").removeChild(backButton.closest("li"));
+    });
+
+    // DOMとして組み立て
+    div.appendChild(p);
+    div.appendChild(backButton);
+    li.appendChild(div);
+
+    // 完了リストに追加
+    document.getElementById("complete-list").appendChild(li);
+
+    // 押下されたボタンのリストを削除する
+    delteFromIncompleteList(completeButton.closest("li"));
+  });
+
+  // button(削除)タグ生成
+  var deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", function () {
+    // 押下されたボタンのリストを削除する
+    delteFromIncompleteList(deleteButton.closest("li"));
+  });
+
+  // DOMとして組み立て
+  div.appendChild(p);
+  div.appendChild(completeButton);
+  div.appendChild(deleteButton);
+  li.appendChild(div);
+
+  // 未完了リストに追加
+  document.getElementById("incomplete-list").appendChild(li);
+};
+document.getElementById("add-button").addEventListener("click", function () {
+  return onClickAdd();
+});
 },{"./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -201,7 +290,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44355" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45611" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
